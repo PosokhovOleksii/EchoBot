@@ -32,20 +32,18 @@ public class MyAmazingBot extends TelegramLongPollingBot {
 
             ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
             List <KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
+
             KeyboardRow row = new KeyboardRow();
 
-            row.add("Row 1 Button 1");
-            row.add("Row 2 Button 2");
-            row.add("Row 3 Button 3");
-
+            row.add("Music");           //line 1
             keyboard.add(row);
 
-            row = new KeyboardRow();
+            row = new KeyboardRow();    //line 2
+            row.add("Movies");
+            keyboard.add(row);
 
-            row.add("Row 2 Button 1");
-            row.add("Row 2 Button 2");
-            row.add("Row 3 Butoon 3");
-
+            row = new KeyboardRow();   //line 3
+            row.add("Serials");
             keyboard.add(row);
 
             keyboardMarkup.setKeyboard(keyboard);
