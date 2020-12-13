@@ -28,36 +28,47 @@ public class MyAmazingBot extends TelegramLongPollingBot {
             if (message_text.equals("/start")) {
                 SendMessage message = new SendMessage() // Create a message object object
                         .setChatId(chat_id)
-                        .setText("Виберіть категрію музики");
+                        .setText("Виберіть один із пунктів меню: ");
 
                 ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-                List<KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
-
+                List<KeyboardRow> keyboard = new ArrayList<>();
                 KeyboardRow row = new KeyboardRow();
-
-                row.add("Music");           //line 1
+                row.add("House");
+                row.add("Trance");
+                row.add("Techno");
                 keyboard.add(row);
-
-                row = new KeyboardRow();    //line 2
-                row.add("Movies");
-                keyboard.add(row);
-
-                row = new KeyboardRow();   //line 3
-                row.add("Serials");
-                keyboard.add(row);
-
                 keyboardMarkup.setKeyboard(keyboard);
                 message.setReplyMarkup(keyboardMarkup);
+                try {
+                    execute(message);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
+            } else if (message_text.equals("House")) {
+                SendMessage message = new SendMessage()
+                        .setChatId(chat_id)
+                        .setText("https://www.youtube.com/watch?v=-RkQDlUV4Fc&ab_channel=TropicalHouseRadio");
                 try {
                     execute(message); // Sending our message object to user
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
-            }
-            else if(message_text.equals("Music")){
+            } else if (message_text.equals("Trance")) {
                 SendMessage message = new SendMessage()
                         .setChatId(chat_id)
-                        .setText("https://www.youtube.com/watch?v=-RkQDlUV4Fc&ab_channel=TropicalHouseRadio");
+                        .setText("https://www.youtube.com/watch?v=iXAbte4QXKs&ab_channel=TheGrandSound");
+                try {
+                    execute(message); // Sending our message object to user
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else if (message_text.equals("Techno")){
+                SendMessage message = new SendMessage()
+                        .setChatId(chat_id)
+                        .setText("https://www.youtube.com/watch?v=5ZBgx1NeUWg&ab_channel=WejustmanRecords");
                 try {
                     execute(message); // Sending our message object to user
                 } catch (TelegramApiException e) {
